@@ -19,4 +19,4 @@ def specialCharacterSeg(fileName, outFileName, specialChar):
 
 
 if __name__ == '__main__':
-    specialCharacterSeg("../file/a.txt", "初赛榜单用户领奖记录.csv", ",")
+    specialCharacterSeg("../../file/a.txt", "初赛榜单用户领奖记录.csv", ",")
