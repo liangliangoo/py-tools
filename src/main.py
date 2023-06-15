@@ -1,3 +1,7 @@
+import multiprocessing
+
+from controller.router import app
 
 if __name__ == '__main__':
-    print("hello python")
+    workers = multiprocessing.cpu_count()
+    app.run(host="127.0.0.1", port=3000, workers=workers, debug=False, access_log=False)
