@@ -1,12 +1,10 @@
 import json
 
+import jsonpickle
 import np as np
 
 
 class Response(json.JSONEncoder):
-    code = 10000
-    msg = "success"
-    data = None
 
     def __init__(self, code, msg, data):
         self.code = code
@@ -14,19 +12,9 @@ class Response(json.JSONEncoder):
         self.data = data
 
     @staticmethod
-    def success(code, msg, data):
-        return Response(code, msg, data)
+    def success(data):
+        return jsonpickle.encode(Response(10000, "success", data), keys=True)
 
-    # @staticmethod
-    # def success(msg):
-    #     return Response(10000, msg, None)
-
-    def default(self, obj):
-        if isinstance(obj, np.integer):
-            return int(obj)
-        elif isinstance(obj, np.floating):
-            return float(obj)
-        elif isinstance(obj, np.ndarray):
-            return obj.tolist()
-        else:
-            return super(Response, self).default(obj)
+    @staticmethod
+    def fail(data):
+        return jsonpickle.encode(Response(20000, "fail", data))
