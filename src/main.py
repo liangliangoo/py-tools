@@ -4,4 +4,4 @@ from api.router import app
 
 if __name__ == '__main__':
     workers = multiprocessing.cpu_count()
-    app.run(host="127.0.0.1", port=3000, workers=workers, debug=False, access_log=False)
+    app.run()
