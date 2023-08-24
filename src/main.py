@@ -1,5 +1,6 @@
 import multiprocessing
 
+import redis
 from api.router import app
 
 if __name__ == '__main__':
